@@ -14,12 +14,12 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 // Taking input values
 $title = $data['title'] ?? '';
-$description1 = $data['description1'] ?? '';
-$description2 = $data['description2'] ?? '';
-$description3 = $data['description3'] ?? '';
-$img1 = $data['img1'] ?? '';
-$img2 = $data['img2'] ?? '';
-$img3 = $data['img3'] ?? '';
+$description1 = $data['description_1'] ?? '';
+$description2 = $data['description_2'] ?? '';
+$description3 = $data['description_3'] ?? '';
+$img1 = $data['image_1'] ?? '';
+$img2 = $data['image_2'] ?? '';
+$img3 = $data['image_3'] ?? '';
 
 // Insert data into the database table
 $sql = "INSERT INTO blog (title, description_1, description_2, description_3, image_1, image_2, image_3) VALUES (?, ?, ?, ?, ?, ?, ?)";

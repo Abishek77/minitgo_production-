@@ -19,7 +19,7 @@ $category = $data['category'] ?? '';
 $offers = $data['offers'] ?? '';
 $client_id = $data['client_id'] ?? '';
 $client_name = $data['client_name'] ?? '';
-$product_description = $data['product_description'] ?? '';
+$product_discription = $data['product_discription'] ?? '';
 $product_image1 = $data['product_image1'] ?? '';
 $product_image2 = $data['product_image2'] ?? '';
 $product_image3 = $data['product_image3'] ?? '';
@@ -45,11 +45,11 @@ $date = $data['date'] ?? '';
 $time = $data['time'] ?? '';
 
 // Insert data into the database table
-$sql = "INSERT INTO product (product_id, product_name, category, offers, client_id, client_name, product_description, product_image1, product_image2, product_image3, product_image4, product_image5, product_image6, product_price, product_title, product_brand, product_size, product_ratings, product_stock, product_color1, product_color2, product_color3, product_color4, similarity, coordinates, user_id, user_name, user_rating, date, time) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO product (product_id, product_name, category, offers, client_id, client_name, product_discription, product_image1, product_image2, product_image3, product_image4, product_image5, product_image6, product_price, product_title, product_brand, product_size, product_ratings, product_stock, product_color1, product_color2, product_color3, product_color4, similarity, coordinates, user_id, user_name, user_rating, date, time) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_prepare($conn, $sql);
 
 // Bind parameters to the prepared statement
-mysqli_stmt_bind_param($stmt, "ssssssssssssssssssssssssssssss", $product_id, $product_name, $category, $offers, $client_id, $client_name, $product_description, $product_image1, $product_image2, $product_image3, $product_image4, $product_image5, $product_image6, $product_price, $product_title, $product_brand, $product_size, $product_ratings, $product_stock, $product_color1, $product_color2, $product_color3, $product_color4, $similarity, $coordinates, $user_id, $user_name, $user_rating, $date, $time);
+mysqli_stmt_bind_param($stmt, "ssssssssssssssssssssssssssssss", $product_id, $product_name, $category, $offers, $client_id, $client_name, $product_discription, $product_image1, $product_image2, $product_image3, $product_image4, $product_image5, $product_image6, $product_price, $product_title, $product_brand, $product_size, $product_ratings, $product_stock, $product_color1, $product_color2, $product_color3, $product_color4, $similarity, $coordinates, $user_id, $user_name, $user_rating, $date, $time);
 
 // Execute the query
 if (mysqli_stmt_execute($stmt)) {

@@ -46,9 +46,8 @@ if (mysqli_num_rows($result) > 0) {
             'time' => $row['time']
             
 
-
-);
-            'product_stock' => $row['product_stock'],
+ 
+            
             
             // Add other columns as needed
         );

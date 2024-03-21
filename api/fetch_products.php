@@ -21,7 +21,7 @@ if (mysqli_num_rows($result) > 0) {
             'offers' => $row['offers'],
             'client_id' => $row['client_id'],
             'client_name' => $row['client_name'],
-            'product_description' => $row['product_description'],
+            'product_discription' => $row['product_discription'],
             'product_image1' => $row['product_image1'],
             'product_image2' => $row['product_image2'],
             'product_image3' => $row['product_image3'],

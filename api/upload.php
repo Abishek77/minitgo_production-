@@ -1,50 +1,50 @@
 <?php
-// Check if a file was uploaded
-if ($_FILES['image']) {
-    $file = $_FILES['image'];
+$uploadDir = 'uploads/';
+$uploadedFile = $uploadDir . basename($_FILES['image']['name']);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($uploadedFile, PATHINFO_EXTENSION));
 
-    // File details
-    $fileName = $file['name'];
-    $fileTmpName = $file['tmp_name'];
-    $fileSize = $file['size'];
-    $fileError = $file['error'];
-
-    // File extension
-    $fileExt = explode('.', $fileName);
-    $fileActualExt = strtolower(end($fileExt));
-
-    // Allowed file types
-    $allowed = array('jpg', 'jpeg', 'png', 'gif');
-
-    // Check if the uploaded file has an allowed extension
-    if (in_array($fileActualExt, $allowed)) {
-        if ($fileError === 0) {
-            if ($fileSize < 5000000) { // Max file size (5MB)
-                // Generate a unique filename to prevent overwriting existing files
-                $fileNameNew = uniqid('', true) . '.' . $fileActualExt;
-
-                // Destination folder where the file will be stored
-                $uploadDir = 'uploads/';
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0777, true); // Create the uploads directory if it doesn't exist
-                }
-
-                // Move the uploaded file to the destination folder
-                $fileDestination = $uploadDir . $fileNameNew;
-                move_uploaded_file($fileTmpName, $fileDestination);
-
-                // Return the path to the uploaded file
-                echo $fileDestination;
-            } else {
-                echo "File is too large!";
-            }
-        } else {
-            echo "Error uploading the file!";
-        }
+// Check if image file is a actual image or fake image
+if (isset($_POST['submit'])) {
+    $check = getimagesize($_FILES['image']['tmp_name']);
+    if ($check !== false) {
+        echo 'File is an image - ' . $check['mime'] . '.';
+        $uploadOk = 1;
     } else {
-        echo "Invalid file type! Only JPG, JPEG, PNG, and GIF files are allowed.";
+        echo 'File is not an image.';
+        $uploadOk = 0;
     }
+}
+
+// Check if file already exists
+if (file_exists($uploadedFile)) {
+    echo 'Sorry, file already exists.';
+    $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES['image']['size'] > 5000000) { // 5MB
+    echo 'Sorry, your file is too large.';
+    $uploadOk = 0;
+}
+
+// Allow certain file formats
+$allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
+if (!in_array($imageFileType, $allowedTypes)) {
+    echo 'Sorry, only JPG, JPEG, PNG, and GIF files are allowed.';
+    $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo 'Sorry, your file was not uploaded.';
+// if everything is ok, try to upload file
 } else {
-    echo "No file uploaded!";
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadedFile)) {
+        echo 'The file ' . htmlspecialchars(basename($_FILES['image']['name'])) . ' has been uploaded.';
+        echo 'uploads/' . htmlspecialchars(basename($_FILES['image']['name']));
+    } else {
+        echo 'Sorry, there was an error uploading your file.';
+    }
 }
 ?>

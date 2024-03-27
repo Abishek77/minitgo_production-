@@ -28,6 +28,7 @@ if (mysqli_num_rows($result) > 0) {
             'product_image4' => $row['product_image4'],
             'product_image5' => $row['product_image5'],
             'product_image6' => $row['product_image6'],
+            'pcode' => $row['pcode'],
             'product_price' => $row['product_price'],
             'product_tittle' => $row['product_tittle'],
             'product_brand' => $row['product_brand'],

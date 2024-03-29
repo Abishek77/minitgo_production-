@@ -28,7 +28,7 @@ $time = date('H:i:s'); // Automatically insert current time
 // Check if all required fields are not empty
 if (!empty($location_coordinates) && !empty($Address) && !empty($full_name) && !empty($phone_number) && !empty($email) && !empty($password)) {
     // Insert data into the database table
-    $sql = "INSERT INTO users (id, user_id, location_coordinates, Address, full_name, phone_number, office_address, email, password, landmark, profile_image, date, time) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (id,location_coordinates, Address, full_name, phone_number, office_address, email, password, landmark, profile_image, date, time) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
 
     // Bind parameters to the prepared statement

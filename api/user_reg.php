@@ -26,13 +26,13 @@ $date = date('Y-m-d'); // Automatically insert current date
 $time = date('H:i:s'); // Automatically insert current time
 
 // Check if all required fields are not empty
-if (!empty($user_id) && !empty($location_coordinates) && !empty($Address) && !empty($full_name) && !empty($phone_number) && !empty($email) && !empty($password)) {
+if (!empty($location_coordinates) && !empty($Address) && !empty($full_name) && !empty($phone_number) && !empty($email) && !empty($password)) {
     // Insert data into the database table
-    $sql = "INSERT INTO users (id, user_id, location_coordinates, Address, full_name, phone_number, office_address, email, password, landmark, profile_image, date, time) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (id, user_id, location_coordinates, Address, full_name, phone_number, office_address, email, password, landmark, profile_image, date, time) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
 
     // Bind parameters to the prepared statement
-    mysqli_stmt_bind_param($stmt, "ssssssssssss", $user_id, $location_coordinates, $Address, $full_name, $phone_number, $office_address, $email, $password, $landmark, $profile_image, $date, $time);
+    mysqli_stmt_bind_param($stmt, "sssssssssss",$location_coordinates, $Address, $full_name, $phone_number, $office_address, $email, $password, $landmark, $profile_image, $date, $time);
 
     // Execute the query
     if (mysqli_stmt_execute($stmt)) {

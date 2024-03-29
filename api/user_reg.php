@@ -12,7 +12,7 @@ include "database.php";
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Taking input values
-$user_id = !empty($data['user_id']) ? $data['user_id'] : '';
+
 $location_coordinates = !empty($data['location_coordinates']) ? $data['location_coordinates'] : '';
 $Address = !empty($data['Address']) ? $data['Address'] : '';
 $full_name = !empty($data['full_name']) ? $data['full_name'] : '';

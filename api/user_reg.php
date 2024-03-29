@@ -12,27 +12,26 @@ include "database.php";
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Taking input values
-
-$location_coordinates = !empty($data['location_coordinates']) ? $data['location_coordinates'] : '';
-$Address = !empty($data['Address']) ? $data['Address'] : '';
-$full_name = !empty($data['full_name']) ? $data['full_name'] : '';
-$phone_number = !empty($data['phone_number']) ? $data['phone_number'] : '';
-$office_address = !empty($data['office_address']) ? $data['office_address'] : '';
-$email = !empty($data['email']) ? $data['email'] : '';
-$password = !empty($data['password']) ? $data['password'] : '';
-$landmark = !empty($data['landmark']) ? $data['landmark'] : '';
-$profile_image = !empty($data['profile_image']) ? $data['profile_image'] : '';
+$location_coordinates = !empty($data['location_coordinates']) ? $data['location_coordinates'] : null;
+$Address = !empty($data['Address']) ? $data['Address'] : null;
+$full_name = !empty($data['full_name']) ? $data['full_name'] : null;
+$phone_number = !empty($data['phone_number']) ? $data['phone_number'] : null;
+$office_address = !empty($data['office_address']) ? $data['office_address'] : null;
+$email = !empty($data['email']) ? $data['email'] : null;
+$password = !empty($data['password']) ? $data['password'] : null;
+$landmark = !empty($data['landmark']) ? $data['landmark'] : null;
+$profile_image = !empty($data['profile_image']) ? $data['profile_image'] : null;
 $date = date('Y-m-d'); // Automatically insert current date
 $time = date('H:i:s'); // Automatically insert current time
 
-// Check if all required fields are not empty
-if (!empty($location_coordinates) && !empty($Address) && !empty($full_name) && !empty($phone_number) && !empty($email) && !empty($password)) {
+// Check if required fields are not empty
+if (!empty($location_coordinates) && !empty($Address) && !empty($full_name) && !empty($phone_number)) {
     // Insert data into the database table
-    $sql = "INSERT INTO users (id,location_coordinates, Address, full_name, phone_number, office_address, email, password, landmark, profile_image, date, time) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (id, location_coordinates, Address, full_name, phone_number, office_address, email, password, landmark, profile_image, date, time) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
 
     // Bind parameters to the prepared statement
-    mysqli_stmt_bind_param($stmt, "sssssssssss",$location_coordinates, $Address, $full_name, $phone_number, $office_address, $email, $password, $landmark, $profile_image, $date, $time);
+    mysqli_stmt_bind_param($stmt, "sssssssssss", $location_coordinates, $Address, $full_name, $phone_number, $office_address, $email, $password, $landmark, $profile_image, $date, $time);
 
     // Execute the query
     if (mysqli_stmt_execute($stmt)) {

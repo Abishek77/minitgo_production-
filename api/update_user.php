@@ -15,18 +15,17 @@ $data = json_decode(file_get_contents("php://input"), true);
 // Taking input values
 $id = $data['id'] ?? '';
 $full_name = $data['full_name'] ?? '';
-$category = $data['category'] ?? '';
 $Address = $data['Address'] ?? '';
 $office_address = $data['office_address'] ?? '';
 $password = $data['password'] ?? '';
 $email = $data['email'] ?? '';
 
 // Update data in the database table
-$sql = "UPDATE users SET full_name=?, category=?, Address=?, office_address=?, password=?, email=? WHERE id=?";
+$sql = "UPDATE users SET full_name=?,  Address=?, office_address=?, password=?, email=? WHERE id=?";
 $stmt = mysqli_prepare($conn, $sql);
 
 // Bind parameters to the prepared statement
-mysqli_stmt_bind_param($stmt, "ssssssi", $full_name, $category, $Address, $office_address, $password, $email, $id);
+mysqli_stmt_bind_param($stmt, "sssssi", $full_name,   $Address, $office_address, $password, $email, $id);
 
 // Execute the query
 if (mysqli_stmt_execute($stmt)) {

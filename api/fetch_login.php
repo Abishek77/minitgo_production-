@@ -18,7 +18,11 @@ if (mysqli_num_rows($result) > 0) {
             'full_name' => $row['full_name'],
             'phone_number' => $row['phone_number'],
             'email' => $row['email'],
-            'password' => $row['password']
+            'password' => $row['password'],
+            'Address' => $row['Address'],
+            'office_address' => $row['office_address'],
+
+
         );
         $output[] = $client;
     }

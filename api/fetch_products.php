@@ -32,6 +32,7 @@ if (mysqli_num_rows($result) > 0) {
             'product_price' => $row['product_price'],
             'product_tittle' => $row['product_tittle'],
             'product_brand' => $row['product_brand'],
+            'material' => $row['material'],
             'product_size' => $row['product_size'],
             'product_ratings' => $row['product_ratings'],
             'product_stock' => $row['product_stock'],

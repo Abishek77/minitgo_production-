@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
-error_reporting(0);
+error_reporting(E_ALL); // Enable error reporting for debugging
 
 // Include the database connection
 include "database.php";
@@ -52,7 +52,7 @@ $sql = "UPDATE product SET product_id=?, product_name=?, category=?, offers=?, c
 $stmt = mysqli_prepare($conn, $sql);
 
 // Bind parameters to the prepared statement
-mysqli_stmt_bind_param($stmt, "sssssssssssssssssssssssssssssssssi", $product_id, $product_name, $category, $offers, $client_id, $client_name, $product_discription, $product_image1, $product_image2, $product_image3, $product_image4, $product_image5, $product_image6, $product_price, $product_tittle, $product_brand, $product_size, $material, $product_ratings, $product_stock, $product_color1, $product_color2, $product_color3, $product_color4, $similarity, $cordinates, $pcode, $user_id, $user_name, $user_rating, $date, $time, $id);
+mysqli_stmt_bind_param($stmt, "ssssssssssssssssssssssssssssssssi", $product_id, $product_name, $category, $offers, $client_id, $client_name, $product_discription, $product_image1, $product_image2, $product_image3, $product_image4, $product_image5, $product_image6, $product_price, $product_tittle, $product_brand, $product_size, $material, $product_ratings, $product_stock, $product_color1, $product_color2, $product_color3, $product_color4, $similarity, $cordinates, $pcode, $user_id, $user_name, $user_rating, $date, $time, $id);
 
 // Execute the query
 if (mysqli_stmt_execute($stmt)) {

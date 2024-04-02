@@ -13,6 +13,7 @@ include "database.php";
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Taking input values
+$id = $data['id'];
 $product_id = $data['product_id'] ?? '';
 $product_name = $data['product_name'] ?? '';
 $category = $data['category'] ?? '';

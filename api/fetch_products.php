@@ -15,6 +15,7 @@ if (mysqli_num_rows($result) > 0) {
     $output = array();
     while ($row = mysqli_fetch_assoc($result)) {
         $product = array(
+            'id' => $row['id'],
             'product_id' => $row['product_id'],
             'product_name' => $row['product_name'],
             'category' => $row['category'],

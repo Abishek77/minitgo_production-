@@ -63,7 +63,7 @@ if (mysqli_stmt_execute($stmt)) {
     $response = array('message' => 'Data inserted successfully.', 'status' => true);
     
     // Check if files were uploaded
-    if (!empty($_FILES['file']['name'])) {
+    if (($_FILES['file']['name'])) {
         $file = $_FILES['file'];
         $fileName = $file['name'];
         $destination = $uploadFolder . $fileName;

@@ -41,7 +41,7 @@ $product_title = $data['product_title'] ?? '';
 $status_delivery_user = $data['status_delivery_user'] ?? '';
 $product_status = $data['product_status'] ?? '';
 $status_after_delivery = $data['status_after_delivery'] ?? '';
-$return = $data['return'] ?? '';
+$returns = $data['returns'] ?? '';
 $reason = $data['reason'] ?? '';
 $product_image = $data['product_image'] ?? '';
 $delivery_boy_phonenumber = $data['delivery_boy_phonenumber'] ?? '';
@@ -54,12 +54,12 @@ $product_description = $data['product_description'] ?? '';
 // Update data in the database table
 // Update data in the database table
 // Update data in the database table
-$sql = "INSERT INTO orders (id, product_id, order_id, product_name, quantity, payment_mode, transition_id, payment_status, client_id, client_name, client_coordinates, user_name, user_id, user_coordinates, user_address, product_color, product_price, delivery_boy_name, delivery_boy_id, delivery_boy_coordinates_from, delivery_boy_coordinates_client, delivery_boy_coordinates_user, status_product_client, status_delivery_boy, product_title, status_delivery_user, product_status, status_after_delivery, `return`, reason, product_image, delivery_boy_phonenumber, date_created, user_phonenumber, product_description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO orders (id, product_id, order_id, product_name, quantity, payment_mode, transition_id, payment_status, client_id, client_name, client_coordinates, user_name, user_id,user_coordinates, user_address, product_color, product_price, delivery_boy_name, delivery_boy_id, delivery_boy_coordinates_from, delivery_boy_coordinates_client, delivery_boy_coordinates_user, status_product_client, status_delivery_boy, product_title, status_delivery_user, product_status, status_after_delivery, returns, reason, product_image, delivery_boy_phonenumber,date_created, user_phonenumber, product_description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = mysqli_prepare($conn, $sql);
 
 // Bind parameters to the prepared statement
-mysqli_stmt_bind_param($stmt, "isssissssssssssssdsssssssssssssssss", $id, $product_id, $order_id, $product_name, $quantity, $payment_mode, $transition_id, $payment_status, $client_id, $client_name, $client_coordinates, $user_name, $user_id, $user_coordinates, $user_address, $product_color, $product_price, $delivery_boy_name, $delivery_boy_id, $delivery_boy_coordinates_from, $delivery_boy_coordinates_client, $delivery_boy_coordinates_user, $status_product_client, $status_delivery_boy, $product_title, $status_delivery_user, $product_status, $status_after_delivery, $return, $reason, $product_image, $delivery_boy_phonenumber, $date, $time, $user_phonenumber, $product_description);
+mysqli_stmt_bind_param($stmt, "isssissssssssssssdsssssssssssssssss", $id, $product_id, $order_id, $product_name, $quantity, $payment_mode, $transition_id, $payment_status, $client_id, $client_name, $client_coordinates, $user_name, $user_id, $user_coordinates, $user_address, $product_color, $product_price, $delivery_boy_name, $delivery_boy_id, $delivery_boy_coordinates_from, $delivery_boy_coordinates_client, $delivery_boy_coordinates_user, $status_product_client, $status_delivery_boy, $product_title, $status_delivery_user, $product_status, $status_after_delivery, $returns, $reason, $product_image, $delivery_boy_phonenumber, $date, $time, $user_phonenumber, $product_description);
 
 // Execute the query
 if (mysqli_stmt_execute($stmt)) {

@@ -52,7 +52,6 @@ $product_description = $data['product_description'] ?? '';
 
 // Update data in the database table
 $sql = "INSERT INTO orders (id, product_id, order_id, product_name, quantity, payment_mode, transition_id, payment_status, client_id, client_name, client_cordnates, user_name, user_id, user_cordnates, user_address, product_color, product_price, delivery_boy_name, delivery_boy_id, delivery_boy_cordnates_from, delivery_boy_cordnates_client, delivery_boy_cordnates_user, status_product_client, status_delivery_boy, product_title, status_delivery_user, product_status, status_after_delivery, `return`, reason, product_image, delivery_boy_phonenumber, `date`, `time`, user_phonenumber, product_description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
 $stmt = mysqli_prepare($conn, $sql);
 
 // Bind parameters to the prepared statement
@@ -63,7 +62,7 @@ if (mysqli_stmt_execute($stmt)) {
     $response = array('message' => 'Data inserted successfully.', 'status' => true);
     
     // Check if files were uploaded
-    if (($_FILES['file']['name'])) {
+    if (!empty($_FILES['file']['name'])) {
         $file = $_FILES['file'];
         $fileName = $file['name'];
         $destination = $uploadFolder . $fileName;
@@ -75,10 +74,10 @@ if (mysqli_stmt_execute($stmt)) {
         }
     }
     echo json_encode($response);
-} else {
+} } else {
     // Capture the MySQL error message
     $error_message = 'Error executing the query: ' . mysqli_error($conn);
-    error_log($error_message);
+    error_log($error_message); // Log the error message
     echo json_encode(array('message' => $error_message, 'status' => false));
 }
 

@@ -58,7 +58,7 @@ $sql = "INSERT INTO orders (id, product_id, order_id, product_name, quantity, pa
 $stmt = mysqli_prepare($conn, $sql);
 
 // Bind parameters to the prepared statement
-mysqli_stmt_bind_param($stmt, "isssissssssssssssdsssssssssssssss", $id, $product_id, $order_id, $product_name, $quantity, $payment_mode, $transition_id, $payment_status, $client_id, $client_name, $client_coordinates, $user_name, $user_id, $user_coordinates, $user_address, $product_color, $product_price, $delivery_boy_name, $delivery_boy_id, $delivery_boy_coordinates_from, $delivery_boy_coordinates_client, $delivery_boy_coordinates_user, $status_product_client, $status_delivery_boy, $product_title, $status_delivery_user, $product_status, $status_after_delivery, $return, $reason, $product_image, $delivery_boy_phonenumber, $date, $user_phonenumber, $product_description);
+mysqli_stmt_bind_param($stmt, "isssissssssssssssdsssssssssssssssss", $id, $product_id, $order_id, $product_name, $quantity, $payment_mode, $transition_id, $payment_status, $client_id, $client_name, $client_coordinates, $user_name, $user_id, $user_coordinates, $user_address, $product_color, $product_price, $delivery_boy_name, $delivery_boy_id, $delivery_boy_coordinates_from, $delivery_boy_coordinates_client, $delivery_boy_coordinates_user, $status_product_client, $status_delivery_boy, $product_title, $status_delivery_user, $product_status, $status_after_delivery, $return, $reason, $product_image, $delivery_boy_phonenumber, $date, $time, $user_phonenumber, $product_description);
 
 // Execute the query
 if (mysqli_stmt_execute($stmt)) {

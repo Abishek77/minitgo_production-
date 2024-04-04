@@ -74,7 +74,7 @@ if (mysqli_stmt_execute($stmt)) {
         }
     }
     echo json_encode($response);
-} } else {
+} else {
     // Capture the MySQL error message
     $error_message = 'Error executing the query: ' . mysqli_error($conn);
     error_log($error_message); // Log the error message

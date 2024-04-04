@@ -23,10 +23,10 @@ $transition_id = $data['transition_id'] ?? '';
 $payment_status = $data['payment_status'] ?? '';
 $client_id = $data['client_id'] ?? '';
 $client_name = $data['client_name'] ?? '';
-$client_cordnates = $data['client_cordnates'] ?? '';
+$client_coordinates = $data['client_coordinates'] ?? ''; // Corrected column name
 $user_name = $data['user_name'] ?? '';
 $user_id = $data['user_id'] ?? '';
-$user_cordnates = $data['user_cordnates'] ?? '';
+$user_coordinates = $data['user_coordinates'] ?? '';
 $user_address = $data['user_address'] ?? '';
 $product_color = $data['product_color'] ?? '';
 $product_price = $data['product_price'] ?? '';
@@ -49,6 +49,7 @@ $date = $data['date'] ?? '';
 $time = $data['time'] ?? '';
 $user_phonenumber = $data['user_phonenumber'] ?? '';
 $product_description = $data['product_description'] ?? '';
+
 
 // Update data in the database table
 $sql = "INSERT INTO orders (id, product_id, order_id, product_name, quantity, payment_mode, transition_id, payment_status, client_id, client_name, client_cordnates, user_name, user_id, user_cordnates, user_address, product_color, product_price, delivery_boy_name, delivery_boy_id, delivery_boy_cordnates_from, delivery_boy_cordnates_client, delivery_boy_cordnates_user, status_product_client, status_delivery_boy, product_title, status_delivery_user, product_status, status_after_delivery, `return`, reason, product_image, delivery_boy_phonenumber, `date`, `time`, user_phonenumber, product_description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
